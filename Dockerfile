@@ -1,7 +1,15 @@
-from scratch
+FROM golang as builder
 
 WORKDIR /app
 
-COPY desafiogo /app/desafiogo
+COPY ./src .
 
-CMD ["/app/desafiogo"]
+RUN go build -o desafiogo
+
+FROM scratch
+
+WORKDIR /app
+
+COPY --from=builder /app/desafiogo .
+
+CMD ["desafiogo"]
