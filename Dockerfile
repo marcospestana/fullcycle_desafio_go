@@ -12,4 +12,4 @@ WORKDIR /app
 
 COPY --from=builder /app/desafiogo .
 
-CMD ["desafiogo"]
+CMD ["/app/desafiogo"]
